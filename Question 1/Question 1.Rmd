@@ -94,7 +94,14 @@ b
 ```{r}
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/create_scatter_plot.R")
 
-create_scatter_plot(covid_data, total_deaths_per_million, life_expectancy)
+create_scatter_plot(covid_data)
 
+```
+
+#covids deaths by percent of population over 65
+```{r}
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/create_scatter_plot_2.R")
+
+create_scatter_plot_2(covid_data)
 ```
 
