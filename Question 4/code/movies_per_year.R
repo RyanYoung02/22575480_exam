@@ -7,8 +7,8 @@ plot_movies_released <- function(data) {
     # Create the bar plot
     ggplot(movie_counts, aes(x = release_year, y = n)) +
         geom_bar(stat = "identity", fill = "steelblue") +
-        labs(x = "Year", y = "Number of Shows Released",
-             title = "Number of Shows Released per Year") +
+        labs(x = "Year", y = "Number of Shows/Movies Released",
+             title = "Number of Shows/Moives per release year") +
         theme_minimal()
 }
 

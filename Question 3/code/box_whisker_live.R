@@ -16,7 +16,7 @@ plot_live_vs_nonlive_tempo <- function(data) {
     plot <- ggplot(data, aes(x = is_live, y = tempo, fill = is_live)) +
         geom_boxplot(outlier.colour = "gray20", outlier.shape = 16, outlier.size = 2) +
         scale_fill_manual(values = c("steelblue", "orange")) +
-        labs(x = "Live", y = "Tempo") +
+        labs(x = "Live or Not", y = "Tempo") +
         ggtitle("Comparison of Tempo: Live vs. Non-Live Songs") +
         theme_minimal() +
         theme(plot.title = element_text(face = "bold", size = 14),

@@ -1,5 +1,5 @@
 ---
-title: "Helping You Write Academic Papers in R using Texevier"
+title: "Analysis of Metallica and Coldplay"
 documentclass: elsarticle
 Thesis_FP: no
 output:
@@ -10,8 +10,7 @@ output:
     template: Tex/TexDefault.txt
     fig_width: 3.5
     fig_height: 3.5
-Author1: Jane Doe^[__Contributions:__  \newline _The authors would like to thank no
-  institution for money donated to this project. Thank you sincerely._]
+
 Ref1: Some Institution, Cape Town, South Africa
 Email1: nfkatzke\@gmail.com
 Author2: John Smith
@@ -41,8 +40,7 @@ fontsize: 11pt
 linestretch: 1.2
 link-citations: yes
 AddTitle: yes
-abstract: |
-  Abstract to be written here. The abstract should not be too long and should provide the reader with a good understanding what you are writing about. Academic papers are not like novels where you keep the reader in suspense. To be effective in getting others to read your paper, be as open and concise about your findings here as possible. Ideally, upon reading your abstract, the reader should feel he / she must read your paper in entirety.
+
 ---
 
 <!-- First: Set your default preferences for chunk options: -->
@@ -89,36 +87,47 @@ source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/filter_so
 metallica_refined <- filter_songs(metallica)
 ```
 
-#box and whisker for tempo (live vs non live) metallica
+The tempo of songs is likely to differ between when it is performed live and when it isn't.A box and whisker plot was used to compare the tempo between live and non-live songs for Metallica.Interesting the tempos have broadly the same mean, with the tempo of live sounds slightly lower.
+
 ```{r}
+#box and whisker for tempo (live vs non live) metallica
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/box_whisker_live.R")
 
 plot_live_vs_nonlive_tempo(metallica)
 ```
 
-#box and whisker for tempo (live vs non live) coldplay
+The same comparison was also made for Coldplay. Again the mean of the tempo was broadly similar for both live and non-live songs. However, the box for live song's tempo was significantly larger than that of non-live.
+
 ```{r}
+#box and whisker for tempo (live vs non live) coldplay
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/box_whisker_live.R")
 
 plot_live_vs_nonlive_tempo(coldplay)
 ```
 
-#Popularity over time metallica
+The popularity of Metallica's songs over time (release date) was plotted using a line plot. Metallica's initial songs weren't particularly popular;however, after 1990 their population began to pick up. As time went on, their popularity began to wane again. 
+
 ```{r}
-source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/line_plot_ metallica.R")
+#Popularity over time metallica
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/line_plot_ popularity.R")
 plot_popularity_over_time(metallica_refined)
 
 ```
 
-#Popularity over time coldplay
+The popularity of Coldplay's songs was also plotted overtime. Coldplay's every songs were their most popular, followed by songs release between 2010 and 2015. Thereafter, Coldplay's songs have been steadily losing popularity
+
 ```{r}
-source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/line_plot_ metallica.R")
+#Popularity over time coldplay
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/line_plot_ popularity.R")
 plot_popularity_over_time(coldplay)
 ```
 
-top songs by energy table
+Using the Spotify data, the top ten songs by energy were put into a table alongside their artist. One artist, Cattle Decapitation, appear twice in this top ten list.
+
 ```{r}
+#top songs by energy table
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/table_energy.R")
 top_songs_table <- create_top_songs_table(spotify, 10)
+print(top_songs_table)
 ```
 
