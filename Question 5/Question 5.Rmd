@@ -1,5 +1,5 @@
 ---
-title: "Helping You Write Academic Papers in R using Texevier"
+title: "New App Information"
 documentclass: elsarticle
 Thesis_FP: no
 output:
@@ -10,8 +10,7 @@ output:
     template: Tex/TexDefault.txt
     fig_width: 3.5
     fig_height: 3.5
-Author1: Jane Doe^[__Contributions:__  \newline _The authors would like to thank no
-  institution for money donated to this project. Thank you sincerely._]
+Author1: 
 Ref1: Some Institution, Cape Town, South Africa
 Email1: nfkatzke\@gmail.com
 Author2: John Smith
@@ -41,8 +40,7 @@ fontsize: 11pt
 linestretch: 1.2
 link-citations: yes
 AddTitle: yes
-abstract: |
-  Abstract to be written here. The abstract should not be too long and should provide the reader with a good understanding what you are writing about. Academic papers are not like novels where you keep the reader in suspense. To be effective in getting others to read your paper, be as open and concise about your findings here as possible. Ideally, upon reading your abstract, the reader should feel he / she must read your paper in entirety.
+
 ---
 
 <!-- First: Set your default preferences for chunk options: -->
@@ -66,23 +64,27 @@ library(tidyverse)
 <!-- # Start Writing here: -->
 <!-- ############################## -->
 
-# Introduction \label{Introduction}
 
-#read in the data
+
+
 ```{r}
+#read in the data
 googleplay<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/googleplay/googleplaystore.csv")
 user_reviews<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/googleplay/googleplaystore_user_reviews.csv")
 ```
 
-#bubble chart (use bubble chart 2)
+This bubble chart shows the rating of an app versus its size as well as how many installations it has (size of the bubble). Most apps have relatively high ratings and are under 25 MB while installations vary. There any new app made shouldn't be too large if we want good ratings and installations. 
+
 ```{r}
+#bubble chart (use bubble chart 2)
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 5/code/Bubble_chart_2.R")
 chart <- create_bubble_chart(googleplay)
 chart
 ```
  
-#table showing popularity by genre 
+This table shows app popularity by genre ranked by the average number of downloads. Comics are the most popular genre by download. This is important for developers of new apps to be aware. 
 ```{r}
+#table showing popularity by genre 
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 5/code/popularity_table.R")
 result <- get_average_ratings_downloads(googleplay)
 result

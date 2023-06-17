@@ -1,5 +1,5 @@
 ---
-title: "Question 1:Covid"
+title: "New York Times Covid Report"
 documentclass: elsarticle
 Thesis_FP: no
 output:
@@ -40,8 +40,7 @@ fontsize: 11pt
 linestretch: 1.2
 link-citations: yes
 AddTitle: yes
-abstract: |
-  Abstract to be written here. The abstract should not be too long and should provide the reader with a good understanding what you are writing about. Academic papers are not like novels where you keep the reader in suspense. To be effective in getting others to read your paper, be as open and concise about your findings here as possible. Ideally, upon reading your abstract, the reader should feel he / she must read your paper in entirety.
+
 ---
 
 <!-- First: Set your default preferences for chunk options: -->
@@ -66,38 +65,58 @@ library(tidyverse)
 <!-- # Start Writing here: -->
 <!-- ############################## -->
 
-# Introduction \label{Introduction}
 
-#read in data 
+
+
 ```{r}
+#read in data 
 covid_data<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/Covid/owid-covid-data.csv")
 prior_data<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/Covid/Deaths_by_cause.csv")
 combined_data<-bind_rows(covid_data,prior_data)
 ```
 
-#Africa's difference versus the other continets
-#new cases
+To examine the different Covid experiences by continent, the mean total deaths per million were plotted for each continent. Africa had significantly less cases than the other continents. However, this could be due to low levels of testing
 ```{r}
+#read in data 
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/new_case_bar.R")
 plot_mean_cases_per_million(covid_data)
 
 ```
 
-
-
-
-#covid deaths by life expectancy 
+Similarly, Africa has lower total mean deaths per million than other continents. Again this could be related to testing as if people are tested for Covid then their deaths are not reported as Covid deaths.
 ```{r}
+#total deaths per million
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/total_deaths_bar.R")
+chart <- create_mean_deaths_bar_chart(covid_data)
+chart
+
+
+```
+
+
+This scatter plot shows the relationship between COVID deaths per million and the life expectancy of a country. There is a strong positive correlation between countries with higher life expectancy and COVID deaths suggesting that old people may be more vulnerable.However, life expectancy is correlated to income of a country so we may be underestimating the effect. 
+```{r}
+#covid deaths by life expectancy 
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/create_scatter_plot.R")
 
 create_scatter_plot(covid_data)
 
 ```
 
-#covids deaths by percent of population over 65
+This scatter plot shows the relationship between COVID deaths per million and the percent of a country's population that is over 65. There is a strong positive correlation between those over 65 and COVID deaths suggest old people are more vulnerable.  
 ```{r}
+#covids deaths by percent of population over 65
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/create_scatter_plot_2.R")
 
 create_scatter_plot_2(covid_data)
+```
+
+This chart shows daily hospital and ICU Admissions for 2020 in Asia. Hospital admissions seem to be a leading indicator for ICU admissions. 
+```{r}
+#hospitals admission chart
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/patient_admissions_chart.R")
+chart <- create_admissions_line_chart(covid_data)
+chart
+
 ```
 
