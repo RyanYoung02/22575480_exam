@@ -56,6 +56,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width 
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 library(scales)
+library(huxtable)
 ```
 
 
@@ -133,5 +134,102 @@ b<- plot_daily_precipitation(london_weather)
 b
 ```
 
+Question 3
 
+```{r}
+#read in the data
+coldplay <- read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/data/Coldplay_vs_Metallica/Coldplay.csv")
+metallica<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/data/Coldplay_vs_Metallica/metallica.csv")
+spotify<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/data/Coldplay_vs_Metallica/Broader_Spotify_Info.csv")
+
+```
+
+```{r}
+#filter songs
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/filter_songs.R")
+metallica_refined <- filter_songs(metallica)
+```
+
+```{r}
+#box and whisker for tempo (live vs non live) metallica
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/box_whisker_live.R")
+
+plot_live_vs_nonlive_tempo(metallica)
+```
+
+```{r}
+#box and whisker for tempo (live vs non live) coldplay
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/box_whisker_live.R")
+
+plot_live_vs_nonlive_tempo(coldplay)
+```
+
+```{r}
+#Popularity over time metallica
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/line_plot_ popularity.R")
+plot_popularity_over_time(metallica_refined)
+```
+
+```{r}
+#Popularity over time coldplay
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/line_plot_ popularity.R")
+plot_popularity_over_time(coldplay)
+```
+
+
+```{r}
+#top songs by energy table
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 3/code/table_energy.R")
+top_songs_table <- create_top_songs_table(spotify, 10)
+print(top_songs_table)
+```
+
+Question 4
+
+```{r}
+#read in the data
+netflix<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/netflix/titles.csv")
+```
+
+```{r}
+#movie release by year
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 4/code/movies_per_year.R")
+plot_movies_released(netflix)
+```
+
+```{r}
+#average scores after 2000
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 4/code/line_chart_score.R")
+plot_average_scores(netflix)
+```
+
+```{r}
+#table showing age rating 
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 4/code/movie_table_age.R")
+movie_counts <- get_movie_counts_by_age(netflix)
+movie_counts
+```
+
+Question 5
+
+```{r}
+#read in the data
+googleplay<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/googleplay/googleplaystore.csv")
+user_reviews<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/googleplay/googleplaystore_user_reviews.csv")
+```
+
+
+```{r}
+#bubble chart (use bubble chart 2)
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 5/code/Bubble_chart_2.R")
+chart <- create_bubble_chart(googleplay)
+chart
+```
+
+```{r}
+#table showing popularity by genre 
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 5/code/popularity_table.R")
+result <- get_average_ratings_downloads(googleplay)
+result
+```
 
