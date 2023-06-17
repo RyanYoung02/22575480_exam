@@ -3,6 +3,7 @@
 # Calculate the mean of new_cases_per_million by continent
 new_case_bar<-function(covid_data){region_data <- covid_data %>%
     group_by(continent) %>%
+    slice(n())
     summarise(mean_new_cases_per_million = mean(new_cases_per_million, na.rm = TRUE))
 
 # Create the bar chart

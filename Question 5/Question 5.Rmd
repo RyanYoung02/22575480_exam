@@ -74,10 +74,17 @@ googleplay<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/g
 user_reviews<-read.csv("/Users/ryanyoung/Desktop/Data Science/22575480/data/data/googleplay/googleplaystore_user_reviews.csv")
 ```
 
-#bubble chart
+#bubble chart (use bubble chart 2)
 ```{r}
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 5/code/Bubble_chart_2.R")
 chart <- create_bubble_chart(googleplay)
 chart
+```
+ 
+#table showing popularity by genre 
+```{r}
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 5/code/popularity_table.R")
+result <- get_average_ratings_downloads(googleplay)
+result
 ```
 
