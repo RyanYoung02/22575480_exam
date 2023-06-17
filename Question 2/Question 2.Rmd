@@ -1,5 +1,5 @@
 ---
-title: "Helping You Write Academic Papers in R using Texevier"
+title: "Don't go, London is cold and wet"
 documentclass: elsarticle
 Thesis_FP: no
 output:
@@ -10,8 +10,7 @@ output:
     template: Tex/TexDefault.txt
     fig_width: 3.5
     fig_height: 3.5
-Author1: Jane Doe^[__Contributions:__  \newline _The authors would like to thank no
-  institution for money donated to this project. Thank you sincerely._]
+
 Ref1: Some Institution, Cape Town, South Africa
 Email1: nfkatzke\@gmail.com
 Author2: John Smith
@@ -41,8 +40,7 @@ fontsize: 11pt
 linestretch: 1.2
 link-citations: yes
 AddTitle: yes
-abstract: |
-  Abstract to be written here. The abstract should not be too long and should provide the reader with a good understanding what you are writing about. Academic papers are not like novels where you keep the reader in suspense. To be effective in getting others to read your paper, be as open and concise about your findings here as possible. Ideally, upon reading your abstract, the reader should feel he / she must read your paper in entirety.
+
 ---
 
 <!-- First: Set your default preferences for chunk options: -->
@@ -66,43 +64,51 @@ library(tidyverse)
 <!-- # Start Writing here: -->
 <!-- ############################## -->
 
-#load in data:
+London, is much colder and wetter than South Africa. 
+
+The graph below shows the daily minimum temperature for London for 2020. The red line shows the average daily minimum temperature in Cape Town (taken from the South African Weather Service). Its clear that London is significantly colder than Cape Town for most of the year. 
+
 ```{r}
+# load in data:
 london_weather <- read_csv("data/london_weather.csv")
 
 ```
 
-#convert date column 
+
 ```{r}
+#convert date column
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 2/code/convert_date_column.R")
 london_weather <- convert_date_column(london_weather, "date")
 ```
 
-#cloud cover bar chart
+
 ```{r}
-source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 2/code/plot_daily_cloud_cover.R")
-a <- plot_daily_cloud_cover(london_weather)
-a
+#line chart minimum temp
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 2/code/line_chart_temp.R")
+plot_daily_min_temperature(london_weather)
 ```
 
-#precipitation bar chat
+Even if you look at the daily mean temperature in London, again compared with Cape Town, you can see the vast majority of the time Cape Town is much warmer.
+
+
 ```{r}
+#daily mean temp
+source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 2/code/plot_daily_temp.R")
+plot_mean_temperature(london_weather)
+```
+
+
+The chart here shows the daily precipitation for London in 2020, illustrating that London is wet almost all year round while Cape Town only has a rainy season in the winter but is sunny the rest of the time.
+
+```{r}
+#precipitation bar chat
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 2/code/plot_daily_precipitation.R")
 b<- plot_daily_precipitation(london_weather)
 b
 ```
 
-#daily sunshine 
-```{r}
-source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 2/code/plot_daily_sunshine.R")
-c<-plot_daily_sunshine(london_weather)
-c
-```
 
-#table 
-```{r}
-source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 2/code/create_mean_table .R")
-mean_table <- create_mean_table(london_weather)
-print(mean_table)
-```
+
+
+
 

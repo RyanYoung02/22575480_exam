@@ -79,16 +79,12 @@ combined_data<-bind_rows(covid_data,prior_data)
 #new cases
 ```{r}
 source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/new_case_bar.R")
-a<-new_case_bar(covid_data)
-a
+plot_mean_cases_per_million(covid_data)
+
 ```
 
 
-```{r}
-source("/Users/ryanyoung/Desktop/Data Science/22575480/Question 1/code/total_deaths_bar.R")
-b<-total_deaths_bar(covid_data)
-b
-```
+
 
 #covid deaths by life expectancy 
 ```{r}
